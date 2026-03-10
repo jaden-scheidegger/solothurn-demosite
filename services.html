@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | City Administration</title>
+  <style>
+    :root {
+      --gov-red: #b5121b;
+      --gov-red-dark: #8f0f16;
+      --white: #ffffff;
+      --gray-100: #f6f6f6;
+      --gray-300: #dddddd;
+      --text: #1f1f1f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: var(--gray-100);
+      line-height: 1.5;
+    }
+
+    .top-bar {
+      background: var(--gov-red);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--gov-red);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .crest {
+      width: 46px;
+      height: 46px;
+      border-radius: 6px;
+      background: var(--gov-red);
+    }
+
+    .brand a {
+      text-decoration: none;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--gov-red-dark);
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.4rem 0.65rem;
+      border-radius: 4px;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: #ffe9ea;
+      color: var(--gov-red-dark);
+    }
+
+    nav a[aria-current="page"] {
+      background: var(--gov-red);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, var(--gov-red) 0%, #c8232d 100%);
+      color: var(--white);
+      padding: 2.5rem 1rem;
+    }
+
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      margin-top: 0;
+      font-size: 1.9rem;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 1.2rem auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-top: 4px solid var(--gov-red);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--gov-red-dark);
+    }
+
+    footer {
+      background: var(--white);
+      border-top: 3px solid var(--gov-red);
+      padding: 1rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 620px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <script>
+    (function (w, d, s, o, f, js, fjs) {
+        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+        js.id = o;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+    })(window, document, 'script', 'SquirroChat', 'https://solothurn-dev.squirro.com/app/static/min/js/SquirroChat.js');
+
+    SquirroChat({
+        squirroInstanceUrl: 'https://solothurn-dev.squirro.com/',
+        projectId: 'IKdANF_pSIiIrQmKSm8e_g',
+        dashboardId: '6RXrJQhCQfyKRx_LAOoc_A',
+        token: 'v4.public.eyJzdWIiOiJGVV9idVJTalNSaUVDYUlxcnRQSllRIiwianRpIjoiYTA1ZjNiZTEtNzQxMy00MmVkLWIwNzQtZWExZTdjZTBjNmM2IiwibmJmIjoiMjAyNi0wMS0yNlQxNjozMToxMyswMDowMCIsInR5cGUiOiJyZWZyZXNoIiwic2NvcGVzIjpbXSwiZXhwIjoiMjA5MS0xMS0yMVQwOTowMjoyNiswMDowMCIsImlhdCI6IjIwMjYtMDEtMjZUMTY6MzE6MTMrMDA6MDAiffYE0TMhpralABYLDyr5NvGvoKwnOIJ9Twqv5bamyilMR3FkiZmCWdYbww-FacZyeszAMavOXdrnPWKns01B9A4.eyJraWQiOiJrNC5waWQuQTRwUlJNemdwUnFUOHdwZEJkdGkwelQ0TnBraXZ1SVdlRmlrb1N3OHpDWGIifQ',
+        customButton: false,
+    });
+</script>
+</head>
+<body data-page="services">
+  <div class="top-bar">Official government website</div>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="crest" aria-hidden="true"></div>
+        <a href="squirrochattest.html"><h1>City Administration</h1></a>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="services.html" data-page="services">Services</a></li>
+          <li><a href="departments.html" data-page="departments">Departments</a></li>
+          <li><a href="notices.html" data-page="notices">Notices</a></li>
+          <li><a href="contact.html" data-page="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h2>Municipal Services</h2>
+      <p>Find essential resident services and online application forms.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="card">
+      <h3>Civil Registry</h3>
+      <p>Birth, marriage, and address registration support.</p>
+    </section>
+    <section class="card">
+      <h3>Building & Planning</h3>
+      <p>Permit applications, zoning requests, and planning consultations.</p>
+    </section>
+    <section class="card">
+      <h3>Social Support</h3>
+      <p>Family assistance, housing guidance, and community aid programs.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      City Administration, 100 Civic Plaza, Suite 200, Main City | Phone: +1 (000) 123-4567
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentPage = document.body.dataset.page;
+      if (!currentPage) {
+        return;
+      }
+
+      const activeLink = document.querySelector(`nav a[data-page="${currentPage}"]`);
+      if (activeLink) {
+        activeLink.setAttribute("aria-current", "page");
+      }
+    });
+  </script>
+</body>
+</html>
