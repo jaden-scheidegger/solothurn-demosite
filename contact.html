@@ -116,6 +116,134 @@
       font-size: 1.9rem;
     }
 
+    .btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--gov-red-dark);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.65rem 1rem;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-launcher {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      width: 64px;
+      height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      background: var(--gov-red);
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      z-index: 9998;
+    }
+
+    .chat-launcher:hover,
+    .chat-launcher:focus {
+      background: var(--gov-red-dark);
+    }
+
+    .chat-launcher svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .modal-open {
+      overflow: hidden;
+    }
+
+    .chat-modal[hidden] {
+      display: none;
+    }
+
+    .chat-modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(31, 31, 31, 0.6);
+      z-index: 9999;
+    }
+
+    .chat-modal-card {
+      width: min(100%, 560px);
+      background: var(--white);
+      color: var(--text);
+      border-top: 4px solid var(--gov-red);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    .chat-modal-card h3 {
+      margin-top: 0;
+      color: var(--gov-red-dark);
+    }
+
+    .chat-modal-card p {
+      margin: 0 0 1rem;
+    }
+
+    .chat-modal-details {
+      margin: 0 0 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      background: #fafafa;
+    }
+
+    .chat-modal-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--gov-red-dark);
+      padding: 0.85rem 1rem;
+    }
+
+    .chat-modal-details-content {
+      padding: 0 1rem 1rem;
+      max-height: 220px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+    }
+
+    .chat-modal-details-content p {
+      margin-bottom: 0.85rem;
+    }
+
+    .chat-modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .chat-modal-accept,
+    .chat-modal-cancel {
+      border: 1px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      font: inherit;
+      padding: 0.65rem 1rem;
+    }
+
+    .chat-modal-accept {
+      background: var(--gov-red);
+      color: var(--white);
+    }
+
+    .chat-modal-cancel {
+      background: #f2f2f2;
+      color: var(--text);
+    }
+
     main {
       max-width: 1080px;
       margin: 1.2rem auto;
@@ -157,6 +285,13 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .chat-launcher {
+        right: 1rem;
+        bottom: 1rem;
+        width: 58px;
+        height: 58px;
+      }
     }
   </style>
   <script>
@@ -174,7 +309,7 @@
         projectId: 'IKdANF_pSIiIrQmKSm8e_g',
         dashboardId: '6RXrJQhCQfyKRx_LAOoc_A',
         token: 'v4.public.eyJzdWIiOiJGVV9idVJTalNSaUVDYUlxcnRQSllRIiwianRpIjoiYTA1ZjNiZTEtNzQxMy00MmVkLWIwNzQtZWExZTdjZTBjNmM2IiwibmJmIjoiMjAyNi0wMS0yNlQxNjozMToxMyswMDowMCIsInR5cGUiOiJyZWZyZXNoIiwic2NvcGVzIjpbXSwiZXhwIjoiMjA5MS0xMS0yMVQwOTowMjoyNiswMDowMCIsImlhdCI6IjIwMjYtMDEtMjZUMTY6MzE6MTMrMDA6MDAiffYE0TMhpralABYLDyr5NvGvoKwnOIJ9Twqv5bamyilMR3FkiZmCWdYbww-FacZyeszAMavOXdrnPWKns01B9A4.eyJraWQiOiJrNC5waWQuQTRwUlJNemdwUnFUOHdwZEJkdGkwelQ0TnBraXZ1SVdlRmlrb1N3OHpDWGIifQ',
-        customButton: false,
+        customButton: true,
     });
 </script>
 </head>
@@ -220,6 +355,40 @@
     </section>
   </main>
 
+  <button class="chat-launcher" type="button" data-open-chat aria-label="Chat öffnen">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v7A2.5 2.5 0 0 1 17.5 15H9l-4.5 4v-4A2.5 2.5 0 0 1 2 12.5zM6.5 5a.5.5 0 0 0-.5.5v7c0 .2.12.39.3.47l.7.31V13h10.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5zm2 3h7v1.5h-7zm0 3h5v1.5h-5z"/>
+    </svg>
+  </button>
+
+  <div class="chat-modal" data-chat-disclaimer hidden>
+    <div class="chat-modal-card" role="dialog" aria-modal="true" aria-labelledby="chat-disclaimer-title">
+      <h3 id="chat-disclaimer-title">Hinweis</h3>
+      <p>Ich bin der KI-gestützte Karriere-Chatbot des Kantons Solothurn. Meine Antworten werden automatisiert generiert und können unvollständig oder fehlerhaft sein. Sie dienen ausschliesslich der allgemeinen Information und sind nicht rechtsverbindlich.</p>
+      <p>Bitte geben Sie im Chat keine sensiblen Personendaten, Gesundheitsdaten oder vollständigen Bewerbungsunterlagen ein, sofern Sie nicht ausdrücklich dazu aufgefordert werden.</p>
+      <details class="chat-modal-details">
+        <summary>Weitere Informationen anzeigen</summary>
+        <div class="chat-modal-details-content">
+          <p><strong>1. Zweck des Karriere-Chatbots</strong><br>Der Karriere-Chatbot des Kantons Solothurn unterstützt Besucherinnen und Besucher der Karrierewebseite bei allgemeinen Fragen rund um offene Stellen, den Bewerbungsprozess, Arbeitgeberinformationen sowie weitere Inhalte der Karriereplattform.<br>Der Chatbot dient ausschliesslich der allgemeinen Information und Orientierung. Er ersetzt keine individuelle Beratung durch Mitarbeitende des Kantons Solothurn.</p>
+          <p><strong>2. KI-generierte Antworten</strong><br>Die Antworten des Karriere-Chatbots werden ganz oder teilweise automatisiert mithilfe künstlicher Intelligenz generiert. Trotz sorgfältiger Konzeption und laufender Verbesserung kann nicht gewährleistet werden, dass die Antworten jederzeit korrekt, vollständig oder aktuell sind.<br>Die durch den Karriere-Chatbot bereitgestellten Informationen sind unverbindlich und begründen keine Rechte oder Pflichten. Massgeblich sind ausschliesslich die offiziellen Informationen, Ausschreibungen, Reglemente und rechtlichen Grundlagen des Kantons Solothurn.</p>
+          <p><strong>3. Keine Bewerbungsentscheidung durch den Chatbot</strong><br>Der Karriere-Chatbot trifft keine Entscheidungen über Bewerbungen und nimmt keine automatisierten Einzelentscheidungen im rechtlichen Sinn vor.<br>Bewerbungen werden ausschliesslich im dafür vorgesehenen Bewerbungsprozess und durch die zuständigen Stellen bearbeitet.</p>
+          <p><strong>4. Eingaben im Chat</strong><br>Bei der Nutzung des Karriere-Chatbots werden die Eingaben bearbeitet, um Ihre Anfrage zu beantworten. Bitte geben Sie im Chat keine besonders schützenswerten Personendaten, keine Gesundheitsdaten und keine vollständigen Bewerbungsunterlagen ein.</p>
+          <p><strong>5. Speicherung und Aufbewahrung von Chatinhalten</strong><br>Die Chatinhalte werden durch den Kanton Solothurn grundsätzlich nicht dauerhaft gespeichert und nicht als Bestandteil eines Bewerbungsdossiers übernommen, sofern dies nicht ausdrücklich vorgesehen ist.<br>Zur Gewährleistung des sicheren und ordnungsgemässen Betriebs kann es technisch bedingt zu einer kurzfristigen Vorhaltung einzelner Chatinhalte für Sicherheits- und Missbrauchspräventionszwecke kommen. Diese Vorhaltung ist auf das erforderliche Minimum beschränkt und beträgt maximal 7 Tage.</p>
+          <p><strong>6. Zweck der Datenbearbeitung</strong><br>Die Bearbeitung der Chatinhalte erfolgt ausschliesslich zu folgenden Zwecken:<br>&middot; Beantwortung von Anfragen<br>&middot; Bereitstellung und technischer Betrieb des Karriere-Chatbots<br>&middot; Gewährleistung von Stabilität und Sicherheit<br>&middot; Missbrauchsprävention und Schutz vor unzulässiger Nutzung</p>
+          <p><strong>7. Keine Nutzung zum Training allgemeiner KI-Modelle</strong><br>Die im Chat eingegebenen Inhalte werden nicht verwendet, um allgemeine KI-Modelle zu trainieren oder zu verbessern.</p>
+          <p><strong>8. Nutzung externer technischer Dienste</strong><br>Der Karriere-Chatbot nutzt künstliche Intelligenz in Form eines grossen Sprachmodells (LLM). Für den technischen Betrieb können externe Dienstleister, insbesondere für Hosting, KI-Funktionalitäten und Abuse Monitoring eingesetzt werden.</p>
+          <p><strong>9. Alternative Kontaktmöglichkeiten</strong><br>Wenn Sie keine KI-gestützte Kommunikation nutzen möchten oder eine verbindliche Auskunft benötigen, stehen Ihnen die regulären Kontakt- und Bewerbungswege zur Verfügung.<br>Bitte nutzen Sie hierfür die offiziellen Kontaktmöglichkeiten und das vorgesehene Bewerbungsportal des Kantons Solothurn.</p>
+          <p><strong>10. Rechte und weitere Informationen</strong><br>Für die Bearbeitung von Personendaten im Zusammenhang mit dem Karriere-Chatbot gelten die anwendbaren datenschutzrechtlichen Bestimmungen des Kantons Solothurn.<br>Weitere Informationen zur Bearbeitung von Personendaten finden Sie in der allgemeinen Datenschutzerklärung des Kantons Solothurn.</p>
+          <p><strong>11. Änderungen</strong><br>Diese Hinweise zum Karriere-Chatbot können angepasst werden, insbesondere wenn sich die technischen Funktionen, die eingesetzten Dienstleister oder die rechtlichen Anforderungen ändern.</p>
+        </div>
+      </details>
+      <div class="chat-modal-actions">
+        <button class="chat-modal-accept" type="button" data-chat-accept>Akzeptieren und weiter</button>
+        <button class="chat-modal-cancel" type="button" data-chat-cancel>Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-inner">
       City Administration, 100 Civic Plaza, Suite 200, Main City | Phone: +1 (000) 123-4567
@@ -237,6 +406,53 @@
       if (activeLink) {
         activeLink.setAttribute("aria-current", "page");
       }
+
+      const chatModal = document.querySelector("[data-chat-disclaimer]");
+      const chatModalCard = chatModal?.querySelector(".chat-modal-card");
+      const openChatButton = document.querySelector("[data-open-chat]");
+      const acceptChatButton = chatModal?.querySelector("[data-chat-accept]");
+      const cancelChatButton = chatModal?.querySelector("[data-chat-cancel]");
+
+      const closeChatModal = () => {
+        if (!chatModal) {
+          return;
+        }
+
+        chatModal.hidden = true;
+        document.body.classList.remove("modal-open");
+      };
+
+      const openChatModal = () => {
+        if (!chatModal) {
+          return;
+        }
+
+        chatModal.hidden = false;
+        document.body.classList.add("modal-open");
+      };
+
+      openChatButton?.addEventListener("click", openChatModal);
+      cancelChatButton?.addEventListener("click", closeChatModal);
+      acceptChatButton?.addEventListener("click", () => {
+        closeChatModal();
+        window.SquirroChat?.open?.();
+      });
+
+      chatModal?.addEventListener("click", (event) => {
+        if (event.target === chatModal) {
+          closeChatModal();
+        }
+      });
+
+      chatModalCard?.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && chatModal && !chatModal.hidden) {
+          closeChatModal();
+        }
+      });
     });
   </script>
 </body>
